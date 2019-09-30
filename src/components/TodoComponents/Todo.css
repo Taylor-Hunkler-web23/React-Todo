@@ -1,3 +1,15 @@
 .todo.completed{
     text-decoration: line-through;
 }
+
+.list{
+    font-weight: 600;
+  
+}
+
+.app-div{
+    border: 1px solid black;
+    text-align: center;
+    background: aqua;
+}
+
