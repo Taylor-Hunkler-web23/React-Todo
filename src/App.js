@@ -13,7 +13,7 @@ const todoData =
     {
       task: 'Bake Cookies',
       id: 1528817084358,
-      completed: true
+      completed: false
     }
   ];
 
@@ -31,50 +31,52 @@ class App extends React.Component {
 
 
   }
- addTodo = todoName => {
-   const newTodo = {
-    task: todoName,
-    id: Date.now(),
-    completed: false
+  addTodo = todoName => {
+    const newTodo = {
+      task: todoName,
+      id: Date.now(),
+      completed: false
 
-   }
-this.setState({
-data: [...this.state.data, newTodo]
- 
-})
+    }
+    this.setState({
+      data: [...this.state.data, newTodo]
 
- }
+    })
 
-toggleTodo = id => {
-this.setState({
-data: this.state.data.map(todo =>{
-if (todo.id ===id) {
-
-  return {
-    ...todo,
-    completed: !todo.completed
   }
-}else {
-  return todo;
-}
 
+  toggleTodo = id => {
+    this.setState({
+      data: this.state.data.map(todo => {
+        if (todo.id === id) {
 
-})
+          return {
+            ...todo,
+            completed: !todo.completed
+          }
+        } else {
+          return todo;
+        }
+      })
+    })
+  }
 
+  clearCompleted = () => {
+    this.setState({
+      data: this.state.data.filter(todo => !todo.completed)
 
-})
+    })
 
-
-}
+  }
 
   render() {
     return (
       <div>
         <h2>Welcome to your Todo App!</h2>
-        <TodoForm addTodo={this.addTodo}/>
+        <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
         <TodoList
-        data={this.state.data}
-        toggleTodo={this.toggleTodo}
+          data={this.state.data}
+          toggleTodo={this.toggleTodo}
         />
       </div>
     );
