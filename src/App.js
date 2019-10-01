@@ -72,7 +72,7 @@ class App extends React.Component {
   render() {
     return (
       <div className= "app-div">
-        <h2>Todo List</h2>
+        <h2 className="title">Todo List</h2>
         <TodoForm addTodo={this.addTodo} clearCompleted={this.clearCompleted} />
         <h2>Things to do:</h2>
         <  TodoList
